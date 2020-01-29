@@ -28,7 +28,7 @@
               <div class="footerContent">
                   
                 <div>
-                  {{ activeLength }} items left
+                  {{ activeItemString }} 
                 </div>
                 <div class="activity">
                   <button :class="{selectedButton: allselected}" @click="showAll" >all</button>
@@ -88,6 +88,10 @@ export default {
    activeLength()
    {
       return this.tasklist.filter(task => task.completed == false).length
+   },
+   activeItemString()
+   {
+     return this.activeLength == 1 ? this.activeLength + " item left" : this.activeLength + " items left"
    },
    existsComplete()
    {
